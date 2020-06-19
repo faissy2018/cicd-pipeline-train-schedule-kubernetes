@@ -4,15 +4,13 @@ pipeline {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "faisal2018/train-schedule"
     }
-    stages {
-        
+   
         stage('Build Docker Image') {
             when {
                 branch 'example-solution'
             }
             steps {
                 script {
-                    
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
